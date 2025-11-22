@@ -1,0 +1,193 @@
+body{--t:.5; --scale:3;}
+svg.root{width:1px;height:1px;position:absolute;left:-100em;}
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:#FFB6C1;
+  fill-opacity: 0.75;
+  display: block;
+}
+
+
+symbol{overflow:visible}
+
+svg use{transform:rotate(0deg); transition:transform calc(var(--t) * 1s);}
+
+svg g.a{transition:transform calc(var(--t) * 1s);}
+svg g.a{transform:scale(var(--scale)) rotate(-90deg);
+filter:url('#f')
+}
+
+
+._2{--n : 2;}
+._3{--n : 3;}
+._4{--n : 4;}
+._5{--n : 5;}
+
+svg .a g:nth-of-type(1){transform:rotate(calc(-.5 * 180deg / var(--n)));}
+svg .a g:nth-of-type(2){transform:rotate(calc( .5 * 180deg / var(--n)));}
+
+svg .a g:nth-of-type(1) use:nth-of-type(2){transform:rotate(calc(-1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(3){transform:rotate(calc(-2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(4){transform:rotate(calc(-3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(5){transform:rotate(calc(-4deg * 180 / var(--n)));}
+
+svg .a g:nth-of-type(2) use:nth-of-type(2){transform:rotate(calc(1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(3){transform:rotate(calc(2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(4){transform:rotate(calc(3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(5){transform:rotate(calc(4deg * 180 / var(--n)));}
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive&display=swap');
+
+body { --t:.5; --scale:3; }
+
+svg.root{width:1px;height:1px;position:absolute;left:-100em;}
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #FFB6C1;
+  fill-opacity: 0.75;
+  display: block;
+}
+
+symbol{overflow:visible}
+
+svg use{transform:rotate(0deg); transition:transform calc(var(--t) * 1s);}
+svg g.a{transition:transform calc(var(--t) * 1s);}
+svg g.a{transform:scale(var(--scale)) rotate(-90deg);
+filter:url('#f')}
+
+._2{--n : 2;}
+._3{--n : 3;}
+._4{--n : 4;}
+._5{--n : 5;}
+
+svg .a g:nth-of-type(1){transform:rotate(calc(-.5 * 180deg / var(--n)));}
+svg .a g:nth-of-type(2){transform:rotate(calc( .5 * 180deg / var(--n)));}
+
+svg .a g:nth-of-type(1) use:nth-of-type(2){transform:rotate(calc(-1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(3){transform:rotate(calc(-2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(4){transform:rotate(calc(-3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(5){transform:rotate(calc(-4deg * 180 / var(--n)));}
+
+svg .a g:nth-of-type(2) use:nth-of-type(2){transform:rotate(calc(1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(3){transform:rotate(calc(2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(4){transform:rotate(calc(3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(5){transform:rotate(calc(4deg * 180 / var(--n)));}
+
+/* Mini-game CSS */
+
+#gamePrompt {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -100%);
+  font-family: 'Edu NSW ACT Cursive', cursive;
+  font-size: 1.3em;
+  color: #1f3b5a;
+  text-align: center;
+  pointer-events: none;
+  z-index: 70;
+  text-shadow: 0 0 5px #7a9ec9, 0 0 15px #cfe3f6;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+  100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+.circle {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #7ac7ff, #1f3b5a);
+  box-shadow: 0 0 20px 5px #7ac7ff, 0 0 40px 10px #3b6eff, 0 0 60px 20px rgba(60, 150, 255, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.3s, box-shadow 0.3s;
+  z-index: 10;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+.circle.active { opacity: 1; }
+.circle.reached {
+  box-shadow: 0 0 40px 20px #7ac7ff, 0 0 60px 30px #3b6eff, 0 0 80px 40px rgba(60, 150, 255, 0.6);
+  transform: scale(1.4);
+  opacity: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+#prizeButton {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em 2em;
+  font-size: 1.5em;
+  background: #3b6eff;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+  animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+  0% { transform: translate(-50%, -50%) translateY(0); }
+  100% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+button {
+  font-family: "Edu NSW ACT Cursive", cursive;
+  font-size: 1.4rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff80ab, #b388ff);
+  color: white;
+  box-shadow: 0 0 10px rgba(179, 136, 255, 0.6), 0 0 20px rgba(255, 128, 171, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(179, 136, 255, 0.9), 0 0 30px rgba(255, 128, 171, 0.7);
+  background: linear-gradient(135deg, #b388ff, #ff80ab);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+div[onclick] {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+div[onclick] {
+  position: fixed;
+  bottom: 40px; /* or whatever you like */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 1000; /* ✅ ensures it's above the SVG */
+}
